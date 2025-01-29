@@ -7,15 +7,24 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class BaseDataFragment<DataBind : ViewDataBinding> : Fragment() {
+abstract class BaseDataVmFragment<DataBind : ViewDataBinding, Vm : BaseViewModel> : Fragment() {
     abstract fun bind(inflater: LayoutInflater, container: android.view.ViewGroup?): DataBind
     abstract fun afterBind()
 
-
+    private var baseViewModel: Vm? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         afterBind()
+        getViewModel()?.let {
+            it.errorMessage.observe(
+                viewLifecycleOwner
+            ) {
+                showToast(it)
+            }
+        }
     }
+
+    open fun getViewModel(): Vm? = baseViewModel
 
     private var _binding: DataBind? = null
     protected val binding get() = _binding!!
@@ -25,7 +34,7 @@ abstract class BaseDataFragment<DataBind : ViewDataBinding> : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = bind(inflater, container).apply {
             executePendingBindings()
-            lifecycleOwner = this@BaseDataFragment.viewLifecycleOwner
+            lifecycleOwner = this@BaseDataVmFragment.viewLifecycleOwner
         }
         return binding.root
     }
