@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1045820458493",
+    "project_id": "newquizapp-fc28e",
+    "storage_bucket": "newquizapp-fc28e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045820458493:android:9a385debcfde9f1da74594",
+        "android_client_info": {
+          "package_name": "ali.hrhera.newquizgaem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4LdJQZ7SdPSz__GIRbTmGfrCPpN6dDYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
