@@ -22,7 +22,7 @@ class FetchOnBoardingScreenUseCase @Inject constructor(
     }
 
     private fun onBoardingScreenData(response: ResponseStatus.Success<List<OnBoardingScreenDto>>) = response.data.map { item ->
-        item.copy().apply {
+        item.apply {
             try {
                 if (item.color?.hexColorValidation() == true) {
                     this.parsedColor = Color.parseColor(item.color)
