@@ -38,19 +38,29 @@ android {
 
 dependencies {
 
-    implementation(libs.hilt.android)
-    implementation(libs.firebase.firestore)
-    implementation(project(":base"))
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    kapt(libs.hilt.android.compiler)
-
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.fragment)
-
     implementation(libs.androidx.core.ktx)
+
+
+    implementation(project(":base"))
+
+    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    implementation(libs.firebase.firestore)
+
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+
+
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
