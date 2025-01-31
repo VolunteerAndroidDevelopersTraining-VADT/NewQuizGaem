@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -32,12 +34,26 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
 
-    implementation(libs.hilt.android )
-    kapt(libs.hilt.android.compiler )
+    implementation(libs.firebase.firestore)
+
+
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.worker)
+    implementation(libs.runtime.worker)
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.hilt.hilt.compiler)
+    kapt(libs.hilt.compiler)
+
+
+    implementation(project(":base"))
+    implementation(project(":auth"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,4 +1,4 @@
-package ali.hrhera.login.uitl
+package ali.hrhera.auth.uitl
 
 import java.math.BigInteger
 
