@@ -3,10 +3,10 @@
 
     <application>
         <activity
-            android:name=".fatures.login.LoginActivity"
+            android:name=".features.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".fatures.register.RegisterActivity"
+            android:name=".features.register.RegisterActivity"
             android:exported="false" />
     </application>
 

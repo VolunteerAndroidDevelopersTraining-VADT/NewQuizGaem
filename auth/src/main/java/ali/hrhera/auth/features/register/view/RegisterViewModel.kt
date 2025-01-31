@@ -1,7 +1,6 @@
-package ali.hrhera.auth.fatures.register.view
+package ali.hrhera.auth.features.register.view
 
 import ali.hrhera.base.BaseViewModel
-import ali.hrhera.auth.domain.UserDto
 import ali.hrhera.auth.domain.usecase.RegisterUseCase
 import ali.hrhera.auth.uitl.errors.EmailError
 import ali.hrhera.auth.uitl.errors.PasswordError

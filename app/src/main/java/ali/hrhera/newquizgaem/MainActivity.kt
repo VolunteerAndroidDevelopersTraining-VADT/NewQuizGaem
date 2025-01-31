@@ -1,6 +1,6 @@
 package ali.hrhera.newquizgaem
 
-import ali.hrhera.auth.fatures.login.LoginActivity
+import ali.hrhera.auth.features.login.LoginActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

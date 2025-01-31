@@ -1,21 +1,16 @@
-package ali.hrhera.auth.fatures.login
+package ali.hrhera.auth.features.register
 
 import ali.hrhera.auth.R
-import ali.hrhera.auth.fatures.login.view.LoginFragment
-import ali.hrhera.auth.fatures.login.view.LoginViewModel
-import android.content.Intent
+import ali.hrhera.auth.features.register.view.RegisterFragment
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
-    private val viewModel: LoginViewModel by viewModels()
+class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +23,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main, LoginFragment())
+            .replace(R.id.main, RegisterFragment())
             .commit()
 
-        viewModel.loginResponse.observe(this) {
-            if (it.first) {
-                setResult(RESULT_OK, Intent().apply {
-                    putExtras(bundleOf("user" to it.second))
-                })
-                finish()
-            }
-        }
+
 
     }
 }

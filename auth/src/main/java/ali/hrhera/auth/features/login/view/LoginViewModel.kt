@@ -1,4 +1,4 @@
-package ali.hrhera.auth.fatures.login.view
+package ali.hrhera.auth.features.login.view
 
 import ali.hrhera.base.BaseViewModel
 import ali.hrhera.auth.domain.UserDto

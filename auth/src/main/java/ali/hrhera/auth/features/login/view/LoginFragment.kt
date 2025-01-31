@@ -1,8 +1,8 @@
-package ali.hrhera.auth.fatures.login.view
+package ali.hrhera.auth.features.login.view
 
 import ali.hrhera.auth.R
 import ali.hrhera.auth.databinding.FragmentLoginBinding
-import ali.hrhera.auth.fatures.register.RegisterActivity
+import ali.hrhera.auth.features.register.RegisterActivity
 import ali.hrhera.base.BaseDataVmFragment
 import android.content.Intent
 import android.view.LayoutInflater

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="ali.hrhera.auth.fatures.register.view.RegisterViewModel" />
+            type="ali.hrhera.auth.features.register.view.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
