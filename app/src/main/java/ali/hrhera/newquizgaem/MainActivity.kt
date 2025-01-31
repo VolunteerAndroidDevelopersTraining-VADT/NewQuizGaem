@@ -1,6 +1,7 @@
 package ali.hrhera.newquizgaem
 
 import ali.hrhera.auth.features.login.LoginActivity
+import ali.hrhera.onboarding.ui.OnBoardingMainActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,12 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    private val startOnBoarding = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == RESULT_OK) {
+            // move to another activity or module
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +35,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        startLogin.launch(
+        /*startLogin.launch(
             Intent(
                 this,
                 LoginActivity::class.java
+            )
+        )*/
+        startOnBoarding.launch(
+            Intent(
+                this,
+                OnBoardingMainActivity::class.java
             )
         )
 
