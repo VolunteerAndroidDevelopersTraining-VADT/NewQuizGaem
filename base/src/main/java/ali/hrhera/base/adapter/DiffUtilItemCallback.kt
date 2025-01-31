@@ -3,15 +3,14 @@ package ali.hrhera.base.adapter
 import androidx.recyclerview.widget.DiffUtil
 
 class DiffUtilItemCallback<T : Any>(
-    private val areItemsTheSame: (oldItem: T, newItem: T) -> Boolean,
-    private val areContentsTheSame: (oldItem: T, newItem: T) -> Boolean
+    private val areItemsSame: (oldItem: T, newItem: T) -> Boolean,
+    private val areContentsSame: (oldItem: T, newItem: T) -> Boolean
 ) : DiffUtil.ItemCallback<T>() {
 
     override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
-        return areItemsTheSame(oldItem, newItem)
+        return areItemsSame(oldItem, newItem)
     }
-
     override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
-        return areContentsTheSame(oldItem, newItem)
+        return areContentsSame(oldItem, newItem)
     }
 }
