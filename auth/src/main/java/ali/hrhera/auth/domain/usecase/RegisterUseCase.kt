@@ -26,9 +26,10 @@ class RegisterUseCase @Inject constructor(
             authRepo.startRegister(
                 username = username.userNameValidation(),
                 email = email.emailValidation(),
+                phone = phone.phoneValidation(),
                 password = password.getHashedPassword(),
-                phone = phone.phoneValidation()
-            )
+
+                )
 
         } catch (e: Throwable) {
             response.emit(ResponseStatus.Error(e))

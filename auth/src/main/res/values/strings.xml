@@ -4,4 +4,8 @@
     <string name="login">Login</string>
     <string name="dont_have_an_account_register">dont have an account? <font color="#354CDF"> Register </font></string>
     <string name="welcome_back">Welcome Back</string>
+    <string name="register">Register new User</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="Register">Register</string>
 </resources>

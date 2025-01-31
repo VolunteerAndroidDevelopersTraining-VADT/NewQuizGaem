@@ -21,6 +21,8 @@ class RegisterFragment : BaseDataVmFragment<FragmentRegisterBinding, RegisterVie
 
     override fun getBaseViewModel(): RegisterViewModel = viewModel
     override fun afterBind() {
+        binding.viewModel = viewModel
+
         binding.register.setOnClickListener {
             viewModel.startRegisterNewUser(
                 email = binding.email.text.toString(),
