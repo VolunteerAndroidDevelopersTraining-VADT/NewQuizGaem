@@ -4,6 +4,8 @@ import ali.hrhera.base.databinding.DialogCusomeToastBinding
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.delay
 
@@ -15,6 +17,9 @@ class CustomToast(context: Context) : Dialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        window?.setBackgroundDrawableResource(android.R.color.transparent)
+        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        window?.setGravity(Gravity.TOP)
     }
 
     fun showErrorToast(msg: String): Dialog {

@@ -5,7 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
 
-fun Fragment.shoDoneToast(msg: String, delay: Long = 2000L, onDismiss: (() -> Unit)? = null) {
+fun Fragment.showDoneToast(msg: String, delay: Long = 2000L, onDismiss: (() -> Unit)? = null) {
     viewLifecycleOwner.lifecycleScope.launch {
         requireContext().shoDoneToast(msg, delay, onDismiss)
     }

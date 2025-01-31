@@ -24,11 +24,14 @@ abstract class BaseViewModel : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
 
-    suspend fun <T : Any> Flow<ResponseStatus<T>>.collectStatus(onData: (data: T) -> Unit) {
+    suspend fun <T : Any> Flow<ResponseStatus<T>>.collectStatus(
+        onError: ((message: Throwable) -> Unit)? = null,
+        onData: (data: T) -> Unit,
+    ) {
         this.collectLatest { status ->
             _isLoading.postValue(status is ResponseStatus.Loading)
             when (status) {
-                is ResponseStatus.Error -> handleError(status.message)
+                is ResponseStatus.Error -> onError?.invoke(status.message) ?: handleError(status.message)
                 is ResponseStatus.Success -> onData(status.data)
                 else -> {}
             }

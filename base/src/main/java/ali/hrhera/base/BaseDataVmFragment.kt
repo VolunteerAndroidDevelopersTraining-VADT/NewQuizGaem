@@ -8,23 +8,24 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
 abstract class BaseDataVmFragment<DataBind : ViewDataBinding, Vm : BaseViewModel> : Fragment() {
-    abstract fun bind(inflater: LayoutInflater, container: android.view.ViewGroup?): DataBind
+    abstract fun bind(inflater: LayoutInflater, container: ViewGroup?): DataBind
     abstract fun afterBind()
 
     private var baseViewModel: Vm? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         afterBind()
-        getViewModel()?.let {
-            it.errorMessage.observe(
+        getBaseViewModel()?.let { viewModel ->
+            viewModel.errorMessage.observe(
                 viewLifecycleOwner
-            ) {
-                showToast(it)
+            ) { message ->
+                showToast(message)
+                showErrorToast(message)
             }
         }
     }
 
-    open fun getViewModel(): Vm? = baseViewModel
+    open fun getBaseViewModel(): Vm? = baseViewModel
 
     private var _binding: DataBind? = null
     protected val binding get() = _binding!!
