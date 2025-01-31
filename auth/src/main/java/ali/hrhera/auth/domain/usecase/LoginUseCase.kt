@@ -1,12 +1,9 @@
 package ali.hrhera.auth.domain.usecase
 
-import ali.hrhera.base.ResponseStatus
 import ali.hrhera.auth.data.AuthRepo
 import ali.hrhera.auth.uitl.emailValidation
-import ali.hrhera.auth.uitl.errors.EmailError
-import ali.hrhera.auth.uitl.errors.PasswordError
 import ali.hrhera.auth.uitl.getHashedPassword
-import ali.hrhera.auth.uitl.toMd5
+import ali.hrhera.base.ResponseStatus
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
