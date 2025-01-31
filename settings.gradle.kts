@@ -23,3 +23,4 @@ rootProject.name = "NewQuizGaem"
 include(":app")
 include(":auth")
 include(":base")
+include(":onboarding")

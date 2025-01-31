@@ -1,22 +1,18 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
     id("kotlin-parcelize")
-    alias(libs.plugins.google.gms.google.services)
+
 }
 
 android {
-    namespace = "ali.hrhera.newquizgaem"
+    namespace = "ali.hrhera.onboarding"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ali.hrhera.newquizgaem"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,26 +32,22 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
 dependencies {
-
     implementation(project(":base"))
-    implementation(project(":auth"))
-    implementation(project(":onboarding"))
-
-
-    implementation(libs.firebase.firestore)
-
 
     implementation(libs.hilt.android)
-    implementation(libs.hilt.worker)
-    implementation(libs.runtime.worker)
     kapt(libs.hilt.android.compiler)
     kapt(libs.hilt.hilt.compiler)
     kapt(libs.hilt.compiler)
 
+    implementation(libs.androidx.fragment)
+
+
+    implementation(libs.firebase.firestore)
 
 
 
