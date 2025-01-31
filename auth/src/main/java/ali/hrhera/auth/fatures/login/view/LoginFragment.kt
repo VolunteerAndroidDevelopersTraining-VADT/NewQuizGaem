@@ -7,6 +7,7 @@ import ali.hrhera.base.BaseDataVmFragment
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +22,12 @@ class LoginFragment : BaseDataVmFragment<FragmentLoginBinding, LoginViewModel>()
     override fun getBaseViewModel(): LoginViewModel = viewModel
     override fun afterBind() {
         binding.login.setOnClickListener {
-            viewModel.startLogin(binding.email.text.toString(), binding.password.text.toString())
+            binding.email.setText("ali@test.dev")
+            binding.password.setText("123456789")
+            viewModel.startLogin(
+                binding.email.text?.toString(),
+                binding.password.text?.toString()
+            )
         }
         binding.gotoRegister.setOnClickListener {
             requireActivity().startActivity(
@@ -30,6 +36,10 @@ class LoginFragment : BaseDataVmFragment<FragmentLoginBinding, LoginViewModel>()
                 }
             )
             requireActivity().finish()
+        }
+
+        viewModel.loading.observe(viewLifecycleOwner) {
+            binding.loading.isVisible = it
         }
 
     }

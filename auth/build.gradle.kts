@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     kapt(libs.hilt.android.compiler)
 
+    implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.fragment)
 
     implementation(libs.androidx.core.ktx)

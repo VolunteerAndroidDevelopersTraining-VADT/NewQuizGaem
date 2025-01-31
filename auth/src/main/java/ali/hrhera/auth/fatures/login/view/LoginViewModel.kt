@@ -3,9 +3,12 @@ package ali.hrhera.auth.fatures.login.view
 import ali.hrhera.base.BaseViewModel
 import ali.hrhera.auth.domain.UserDto
 import ali.hrhera.auth.domain.usecase.LoginUseCase
+import ali.hrhera.base.ResponseStatus
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,6 +25,7 @@ class LoginViewModel
     }
 
     val loginResponse = MutableLiveData<Pair<Boolean, UserDto>>()
+    val loading = loginUseCase.response.map { it is ResponseStatus.Loading }.asLiveData()
 
     init {
         viewModelScope.launch {
