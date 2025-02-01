@@ -44,5 +44,15 @@ class MainViewFragment : BaseFragment<FragmentMainViewBinding>() {
         viewModel.errorMessage.observe(viewLifecycleOwner) {
             showErrorToast(it)
         }
+
+
+        viewModel.loading.observe(viewLifecycleOwner) {
+            with(binding) {
+                next.isVisible = !it
+                skip.isVisible = !it
+                loading.isVisible = it
+            }
+        }
+
     }
 }
