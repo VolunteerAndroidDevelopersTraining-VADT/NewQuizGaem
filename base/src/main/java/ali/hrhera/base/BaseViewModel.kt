@@ -3,8 +3,12 @@ package ali.hrhera.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.stateIn
 
 
 abstract class BaseViewModel : ViewModel() {
@@ -39,4 +43,10 @@ abstract class BaseViewModel : ViewModel() {
     }
 
 
+    fun <T> Flow<T>.toStatFlow(defaultValue: T): StateFlow<T> {
+        return this.stateIn(viewModelScope, SharingStarted.Eagerly, defaultValue)
+    }
+    fun <T> Flow<T?>.toStatFlow(): StateFlow<T?> {
+        return this.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    }
 }

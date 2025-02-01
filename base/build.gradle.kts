@@ -42,6 +42,12 @@ dependencies {
     implementation(libs.coil.network.okhttp)
     implementation(libs.coil.svg)
 
+    implementation(libs.gson)
+
+    implementation(libs.androidx.datastore.preferences)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
