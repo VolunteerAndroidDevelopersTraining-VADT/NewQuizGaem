@@ -25,7 +25,7 @@ class AppDataStore(context: Context) {
         when (value) {
             is String -> {
                 dataStore.edit { preferences ->
-                    preferences[stringPreferencesKey(key.toMd5())] = value as String
+                    preferences[stringPreferencesKey(key)] = value as String
                 }
             }
 
