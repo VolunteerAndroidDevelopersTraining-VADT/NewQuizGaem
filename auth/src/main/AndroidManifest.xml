@@ -4,10 +4,12 @@
     <application>
         <activity
             android:name=".features.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".features.register.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>

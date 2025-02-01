@@ -11,7 +11,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -21,12 +24,11 @@ class MainActivity : AppCompatActivity() {
         if (it.resultCode == RESULT_OK) {
             // move to another activity or module
             viewModel.saveIsLogin(true)
-        }
+        } else viewModel.saveIsLogin(false)
 
     }
     private val startOnBoarding = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         viewModel.saveIsFirstTime(false)
-        Log.w("TAG", "Test: ${it.resultCode} ")
     }
     private val viewModel: MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,27 +41,34 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        viewModel.states.observe(this) {
-            Log.w("TAG", "onCreate: $it")
-            if (it.first) {
-                startOnBoarding.launch(
-                    Intent(
-                        this,
-                        OnBoardingMainActivity::class.java
-                    )
-                )
-                return@observe
-            }
-            if (!it.second) {
-                startLogin.launch(
-                    Intent(
-                        this,
-                        LoginActivity::class.java
-                    )
-                )
+        lifecycleScope.launch {
+            viewModel.states.collectLatest {
+                when (it) {
+                    MainState.Idle -> {}
+                    MainState.OpenLogin -> startLoginFlow()
+                    MainState.OpenOnBoarding -> openOnBoarding()
+                }
             }
         }
 
 
+    }
+
+    private fun openOnBoarding() {
+        startOnBoarding.launch(
+            Intent(
+                this@MainActivity,
+                OnBoardingMainActivity::class.java
+            )
+        )
+    }
+
+    private fun startLoginFlow() {
+        startLogin.launch(
+            Intent(
+                this@MainActivity,
+                LoginActivity::class.java
+            )
+        )
     }
 }
